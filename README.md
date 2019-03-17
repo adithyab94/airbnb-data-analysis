@@ -1,4 +1,4 @@
-# Dive Into Boston and Seattle Airbnb Data
+# An Analysis of Boston and Seattle Airbnb Data
 
 ## Project Motivation
 
