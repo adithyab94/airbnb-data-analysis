@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Airbnb</title>
+<title>Airbnb-data-analysis</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13269,6 +13269,11 @@ div#notebook {
         <span class="n">df2</span><span class="o">.</span><span class="n">zipcode</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">zipcode</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
     
     <span class="c1"># Fill missing data</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    We fill the missing values with median or most frequent value based on other related features</span>
+<span class="sd">    This method seemed reasonable given the small amount of missing values. </span>
+<span class="sd">    If these columns had more missing data, there are more advanced ways to impute these metrics.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df2</span><span class="o">.</span><span class="n">bathrooms</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;bedrooms&quot;</span><span class="p">)[</span><span class="s2">&quot;bathrooms&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;median&quot;</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df2</span><span class="o">.</span><span class="n">beds</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;bedrooms&quot;</span><span class="p">)[</span><span class="s2">&quot;beds&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;median&quot;</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df2</span><span class="o">.</span><span class="n">bedrooms</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;bathrooms&quot;</span><span class="p">)[</span><span class="s2">&quot;bedrooms&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;median&quot;</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
